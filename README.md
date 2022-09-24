@@ -1,4 +1,4 @@
-# Smith-Waterman
+# Pairwise local sequence alignment - Smith-Waterman
 Pairwise local sequence alignment between two nucleotide sequences using the Smith-Waterman algorithm.
 
 <p align="center">
