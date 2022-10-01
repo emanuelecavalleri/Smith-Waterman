@@ -1,0 +1,106 @@
+---
+title: "Applying Smith-Waterman algorithm for local nucleotide sequences alignment with smithWaterman"
+author: "Emanuele Cavalleri"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Applying Smith-Waterman algorithm for local nucleotide sequences alignment with smithWaterman}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r style, echo = FALSE, results = 'asis'}
+library(BiocStyle)
+```
+
+```{r, echo = FALSE}
+library(knitr)
+```
+
+```{r, echo = FALSE}
+library(Biostrings)
+library(benchmarkme)
+library(ShortRead)
+library(smithWaterman)
+```
+
+# Introduction
+
+Units for measuring distance differ significantly between the European and
+the US metric systems. The `r Rpackage("smithWaterman")` package provides 
+functions to convert kilometres to miles and *vice versa*.
+
+# Smith-Waterman algorithm
+
+## Applying **Smith-Waterman** algorithm
+
+Applying **Smith-Waterman** algorithm is easy as shown in this example:
+
+```{r}
+sw <- smith_waterman("TATCT", "TAGTCT", 7, -10, -7)
+# Same as smith_waterman("TATCT", "TAGTCT", 7, 10, 7)
+sw
+```
+
+## Applying **Smith-Waterman** algorithm to DNAString objects
+
+Data type DNAString (S4 class) is a container for storing a (potentially very long) individual DNA sequence, with efficient methods for access and manipulation.
+
+Applying **Smith-Waterman** algorithm is easy as shown in this example:
+
+```{r}
+X <- DNAString("TATCT")
+Y <- DNAString("TAGTCT")
+sw <- smith_waterman_DNAString(X, Y, 7, -10, -7)
+sw
+```
+
+```{r}
+data(phiX174Phage)
+X <-  subseq(phiX174Phage[1], 1, 500) # First 500 nucleotides
+Y <-  subseq(phiX174Phage[2], 1, 500)
+start_time <- Sys.time()
+# Execute it for ten times
+for (i in 1:10)
+  sw <- smith_waterman_DNAString(X, Y, 7, -10, -7)
+end_time <- Sys.time()
+cat("Best local alignment's score according to Smith-Waterman algorithm:", sw[[3]])
+```
+```{r out.width="100%"}
+url <- "https://www.humboldtmfg.com/product-originals/_lrg@1x/H-2260.png"
+knitr::include_graphics(url)
+```
+
+```{r}
+cat("Mean execution time", round(end_time - start_time, 1) / 10, "second(s) on an", get_cpu()$model_name, "having", round(get_ram()/1000000000, 2), "GB of RAM")
+```
+
+```{r}
+setwd("/Users/emanuelecavalleri/Desktop/Scientific_programming/PROJECT_6-Pairwise_local_sequence_alignment/smithWaterman/inst/example-data/")
+fastqfile <- "SP1.fq"
+seqset <- readDNAStringSet(fastqfile, format="fastq", with.qualities=TRUE)
+X <-  seqset[1]
+Y <-  seqset[246]
+sw <- smith_waterman_DNAString(X, Y, 7, -10, -7)
+cat("Best local alignment's score according to Smith-Waterman algorithm:", sw[[3]])
+```
+
+```{r}
+data(HNF4alpha)
+X <-  HNF4alpha[1]
+Y <-  HNF4alpha[6]
+sw <- smith_waterman_DNAString(X, Y, 7, -10, -7)
+sw
+```
+
+## Printing **Smith-Waterman** algorithm
+
+Printing **Smith-Waterman** algorithm output is just as easy (also you bypass/overcome the problem associated with different type of objects as input -> this is the suggested function to effectively use to locally align two nucleotidic sequences):
+
+```{r}
+print_smith_waterman(HNF4alpha[1], "AGGCCAAAGTCCT", 7, -10, -7)
+```
+## SessionInfo
+```{r}
+sessionInfo()
+```

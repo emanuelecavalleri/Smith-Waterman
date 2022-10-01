@@ -1,0 +1,22 @@
+Package: smithWaterman
+Title: Applying Smith-Waterman algorithm to two nucleotidic sequences
+Version: 0.99.0
+Authors@R: c(
+    person(given = "Emanuele",
+           family = "Cavalleri",
+           role = c("aut", "cre"),
+           email = "emanuele.cavalleri@mail.polimi.it")
+    )
+Description: This package serves to align locally
+    two nucleotide sequences, by making use of Smith-
+    Waterman algorithm.
+Depends: R(>= 3.6)
+Imports: Biostrings, benchmarkme, ShortRead, methods
+Suggests: knitr, rmarkdown, BiocStyle, testthat
+License: GPL-2
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+VignetteBuilder: knitr
+URL: https://github.com/emanuelecavalleri/Smith-Waterman
+biocViews: Software, BiomedicalInformatics, BiologicalQuestion
