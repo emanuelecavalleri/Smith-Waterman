@@ -1,5 +1,5 @@
 # Pairwise local sequence alignment - Smith-Waterman
-Pairwise local sequence alignment between two nucleotide sequences using the Smith-Waterman algorithm implemented in R.
+R package applying pairwise local sequence alignment between two nucleotide sequences using the Smith-Waterman algorithm.
 
 <p align="center">
   <img 
