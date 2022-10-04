@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{smith_waterman_DNAString}
 \alias{smith_waterman_DNAString}
-\title{Apply Smith-Waterman algorithm with DNAStrings}
+\title{Apply Smith-Waterman algorithm to DNAString objects}
 \usage{
 smith_waterman_DNAString(X, Y, match, mismatch, d)
 }
@@ -11,17 +11,17 @@ smith_waterman_DNAString(X, Y, match, mismatch, d)
 
 \item{Y}{Another DNAString object}
 
-\item{match}{Score of a match}
+\item{match}{Score associated with a match}
 
-\item{mismatch}{Penalty of a mismatch}
+\item{mismatch}{Penalty associated with a mismatch}
 
-\item{d}{Penalty of a gap/indel}
+\item{d}{Penalty associated with a gap/indel}
 }
 \value{
-A list containing a possible local alignment with cost matrix and best score
+A list containing the local alignment with scoring matrix and best score
 }
 \description{
-This function take as input two DNAString(Set) (Biostrings) objects
+This function take as input two DNAString objects
 and returns one of the possible best local alignment in terms
 of score according to Smith-Waterman greedy algorithm.
 }

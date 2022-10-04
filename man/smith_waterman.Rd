@@ -7,18 +7,18 @@
 smith_waterman(X, Y, match, mismatch, d)
 }
 \arguments{
-\item{X}{A nucleotidic sequence}
+\item{X}{A nucleotide sequence}
 
-\item{Y}{Another nucleotidic sequence}
+\item{Y}{Another nucleotide sequence}
 
-\item{match}{Score of a match}
+\item{match}{Score associated with a match}
 
-\item{mismatch}{Penalty of a mismatch}
+\item{mismatch}{Penalty associated with a mismatch}
 
-\item{d}{Penalty of a gap/indel}
+\item{d}{Penalty associated with a gap/indel}
 }
 \value{
-A list containing a possible local alignment with cost matrix and best score
+A list containing the local alignment with scoring matrix and best score
 }
 \description{
 This function take as input two strings and returns

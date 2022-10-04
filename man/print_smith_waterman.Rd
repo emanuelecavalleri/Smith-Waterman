@@ -2,28 +2,28 @@
 % Please edit documentation in R/functions.R
 \name{print_smith_waterman}
 \alias{print_smith_waterman}
-\title{Show Smith-Waterman algorithm output}
+\title{Apply Smith-Waterman algorithm and show its output}
 \usage{
 print_smith_waterman(X, Y, match, mismatch, d)
 }
 \arguments{
-\item{X}{A nucleotidic sequence}
+\item{X}{A nucleotide sequence}
 
-\item{Y}{Another nucleotidic sequence}
+\item{Y}{Another nucleotide sequence}
 
-\item{match}{Score of a match}
+\item{match}{Score associated with a match}
 
-\item{mismatch}{Penalty of a mismatch}
+\item{mismatch}{Penalty associated with a mismatch}
 
-\item{d}{Penalty of a gap/indel}
+\item{d}{Penalty associated with a gap/indel}
 }
 \value{
-A visualization of the two aligned sequences with the best score
+A visualization of the local alignment with scoring matrix and best score
 }
 \description{
-This function take as input two strings and returns a visualization
-of one of the possible best local alignment in terms of score
-according to Smith-Waterman greedy algorithm.
+This function takes as input two strings/DNAString objects and returns
+a visualization of one of the possible best local alignment in terms of
+score according to Smith-Waterman greedy algorithm.
 }
 \examples{
 library(Biostrings)

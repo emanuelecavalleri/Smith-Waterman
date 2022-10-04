@@ -4,17 +4,17 @@
 \name{smithWaterman-package}
 \alias{smithWaterman-package}
 \alias{smithWaterman}
-\title{smithWaterman - Apply Smith-Waterman algorithm to two nucleotidic sequences}
+\title{smithWaterman - Best local alignment of two nucleotide sequences according to Smith-Waterman algorithm}
 \description{
-The \code{smithWaterman} package implements functions for alignment and
-visualization of two nucleotidic sequences according to Smith-Waterman greedy algorithm.
+The \code{smithWaterman} package implements functions for the local alignment
+of two nucleotide sequences according to Smith-Waterman greedy algorithm.
 }
 \details{
 \tabular{ll}{
 Package: \tab smithWaterman\cr
 Type: \tab Package\cr
-Version: \tab 0.99.0\cr
-Date: \tab 2022-09-28\cr
+Version: \tab 1.0.0\cr
+Date: \tab 2022-10-03\cr
 License: \tab GPL (>=2)\cr
 }
 }
