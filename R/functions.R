@@ -28,7 +28,7 @@ smith_waterman <- function(X, Y, match, mismatch, d) {
     if(!is.character(Y)) stop("Y is not a string!")
 
     # Check match, mismatch and d are all numeric
-    if (!is.numeric(match) || !is.numeric(mismatch) || !is.numeric(d))
+    if (!(is.numeric(match) && is.numeric(mismatch) && is.numeric(d)))
         stop("Argument is not numeric!")
     
     # Penalties must be 0 or negative
@@ -133,8 +133,8 @@ smith_waterman <- function(X, Y, match, mismatch, d) {
 smith_waterman_DNAString <- function(X, Y, match, mismatch, d) {
     
     # Check X and Y sequences are both DNAString objects
-    if(!is(X,"DNAString") && !is(X,"DNAStringSet")) stop("X is not a DNAString!")
-    if(!is(Y,"DNAString") && !is(Y,"DNAStringSet")) stop("Y is not a DNAString!")
+    if(!(is(X,"DNAString") || is(X,"DNAStringSet"))) stop("X is not a DNAString!")
+    if(!(is(Y,"DNAString") || is(Y,"DNAStringSet"))) stop("Y is not a DNAString!")
   
     return(smith_waterman(as.character(X), as.character(Y), match, mismatch, d))
 }
@@ -165,9 +165,9 @@ smith_waterman_DNAString <- function(X, Y, match, mismatch, d) {
 #' @export
 print_smith_waterman <- function(X, Y, match, mismatch, d) {
     # Check X and Y sequences are both Strings or DNAString objects
-    if(!is.character(X) && !is(X,"DNAString") && !is(X,"DNAStringSet"))
+    if(!(is.character(X) || is(X,"DNAString") || is(X,"DNAStringSet")))
         stop("X is not a string or DNAString!")
-    if(!is.character(Y) && !is(Y,"DNAString") && !is(Y,"DNAStringSet"))
+    if(!(is.character(Y) || is(Y,"DNAString") || is(Y,"DNAStringSet")))
         stop("Y is not a string or DNAString!")
   
     X <- as.character(X)
