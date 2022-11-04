@@ -167,8 +167,8 @@ build_F <- function(F, seq_X, seq_Y, match, mismatch, d) {
 #' @seealso \code{\link{smith_waterman_string}}\cr
 traceback <- function(F, seq_X, seq_Y, match, mismatch, d) {
   # Initialize aligned subsequences for traceback
-  aligned_X = character()
-  aligned_Y = character()
+  aligned_X <- character()
+  aligned_Y <- character()
   
   # Traceback, starting at the highest score in the scoring matrix F
   alignment_score <- max(F)
