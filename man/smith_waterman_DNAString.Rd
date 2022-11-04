@@ -18,10 +18,10 @@ smith_waterman_DNAString(X, Y, match, mismatch, d)
 \item{d}{Penalty associated with a gap/indel}
 }
 \value{
-A list containing the local alignment with scoring matrix and best score
+A Smith_Waterman object
 }
 \description{
-This function take as input two DNAString objects
+This function takes as input two DNAString objects
 and returns one of the possible best local alignment in terms
 of score according to Smith-Waterman greedy algorithm.
 }
@@ -34,8 +34,8 @@ smith_waterman_DNAString(DNAString("TATCT"), DNAString("TTCGG"), 7, -10, -7)
 \url{https://en.wikipedia.org/wiki/Smith\%E2\%80\%93Waterman_algorithm}\cr
 }
 \seealso{
+\code{\link{smith_waterman_string}}\cr
 \code{\link{smith_waterman}}\cr
-\code{\link{print_smith_waterman}}\cr
 }
 \author{
 Emanuele Cavalleri\cr Politecnico di Milano\cr Maintainer: Emanuele

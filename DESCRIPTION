@@ -1,5 +1,6 @@
 Package: smithWaterman
-Title: Best local alignment of two nucleotide sequences according to Smith-Waterman algorithm
+Title: Best local alignment of two nucleotide sequences according to
+        Smith-Waterman algorithm
 Version: 1.0.0
 Authors@R: c(
     person(given = "Emanuele",
@@ -19,4 +20,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 URL: https://github.com/emanuelecavalleri/Smith-Waterman
-biocViews: Software, BiomedicalInformatics, BiologicalQuestion, Alignment
+biocViews: Software, BiomedicalInformatics, BiologicalQuestion,
+        Alignment
+NeedsCompilation: no
+Packaged: 2022-11-04 19:36:08 UTC; emanuelecavalleri
+Author: Emanuele Cavalleri [aut, cre]
+Maintainer: Emanuele Cavalleri <emanuele.cavalleri@mail.polimi.it>

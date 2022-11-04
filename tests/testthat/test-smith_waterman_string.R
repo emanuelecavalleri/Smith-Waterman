@@ -1,11 +1,10 @@
-#context("Apply Smith-Waterman algorithm on DNAString(Set) objects")
-test_that("Apply Smith-Waterman algorithm on DNAString objects", {
+#context("Apply Smith-Waterman algorithm on strings")
+test_that("Apply Smith-Waterman algorithm on strings", {
     X <- "TATCT"
     Y <- "TAGTCT"
     match <- 7
     mismatch <- -10
     d <- -7
-    
     
     aligned_X <- c("T", "A", "-", "T", "C", "T")
     aligned_Y <- c("T", "A", "G", "T", "C", "T")
@@ -20,17 +19,14 @@ test_that("Apply Smith-Waterman algorithm on DNAString objects", {
                                mismatch=mismatch, d=d,
                                aligned_X=aligned_X, aligned_Y=aligned_Y,
                                alignment_score=alignment_score, F=F)
-    expect_equal(smith_waterman_DNAString(DNAString(X), DNAString(Y), match,
-                                          mismatch, d), expected)
-    expect_equal(smith_waterman_DNAString(DNAStringSet(X)[1], DNAStringSet(Y)[1],
-                                          match, mismatch, d), expected)
-    expect_equal(smith_waterman_DNAString(DNAStringSet(X)[1], DNAStringSet(Y)[1],
-                                          match, mismatch, d),
-                 smith_waterman_string(X, Y, match, mismatch, d))
+    expect_equal(smith_waterman_string(X, Y, match, mismatch, d), expected)
+    expect_equal(smith_waterman_string(X, Y, match, mismatch, d),
+                 smith_waterman_DNAString(DNAString(X), DNAString(Y), match,
+                                          mismatch, d))
 })
 
-test_that("returns error if not DNAString object", {
-  expect_error(smith_waterman_DNAString(DNAString("TATCT"), "TATCT", 7, -10, -7))
+test_that("returns error if not string", {
+    expect_error(smith_waterman_string("TATCT", 98, 7, -10, -7))
 })
 
 
