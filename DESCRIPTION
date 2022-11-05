@@ -1,7 +1,7 @@
 Package: smithWaterman
 Title: Best local alignment of two nucleotide sequences according to
         Smith-Waterman algorithm
-Version: 1.0.0
+Version: 0.99.0
 Authors@R: c(
     person(given = "Emanuele",
            family = "Cavalleri",
