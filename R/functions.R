@@ -42,7 +42,7 @@ Smith_Waterman <- setRefClass("Smith_Waterman",
                                   # but it returns getter+setter, and we don't want a setter
                                 }
                               )
-                          ) 
+                             ) 
 
 #' Apply Smith-Waterman algorithm to strings
 #'
@@ -69,44 +69,45 @@ Smith_Waterman <- setRefClass("Smith_Waterman",
 #' 
 #' @export
 smith_waterman_string <- function(X, Y, match, mismatch, d) {
+  
+  # Check X and Y sequences are both strings
+  if(!is.character(X)) stop("X is not a string!")
+  if(!is.character(Y)) stop("Y is not a string!")
 
-    # Check X and Y sequences are both strings
-    if(!is.character(X)) stop("X is not a string!")
-    if(!is.character(Y)) stop("Y is not a string!")
-
-    # Check match, mismatch and d are all numeric
-    if (!(is.numeric(match) && is.numeric(mismatch) && is.numeric(d)))
-        stop("Argument is not numeric!")
+  # Check match, mismatch and d are all numeric
+  if (!(is.numeric(match) && is.numeric(mismatch) && is.numeric(d)))
+    stop("Argument is not numeric!")
     
-    # Penalties must be 0 or negative
-    if (mismatch > 0) mismatch <- -mismatch
-    if (d > 0) d <- -d
+  # Penalties must be 0 or negative
+  if (mismatch > 0) mismatch <- -mismatch
+  if (d > 0) d <- -d
     
-    # '0' followed by single characters of X (needed to build the scoring matrix)
-    seq_X <- c(0, unlist(strsplit(X, '')))
-    seq_Y <- c(0, unlist(strsplit(Y, '')))
+  # '0' followed by single characters of X (needed to build the scoring matrix)
+  seq_X <- c(0, unlist(strsplit(X, '')))
+  seq_Y <- c(0, unlist(strsplit(Y, '')))
 
-    # Initialization of the scoring matrix F
-    xlen <- length(seq_X)
-    ylen <- length(seq_Y)
-    F <- matrix(NA, xlen, ylen)
-    # F(i,0) = 0
-    F[,1] <- integer(xlen)
-    # F(0,j) = 0
-    F[1,] <- integer(ylen)
-    dimnames(F) <- list(seq_X, seq_Y)
+  # Initialization of the scoring matrix F
+  xlen <- length(seq_X)
+  ylen <- length(seq_Y)
+  F <- matrix(NA, xlen, ylen)
+  # F(i,0) = 0
+  F[,1] <- integer(xlen)
+  # F(0,j) = 0
+  F[1,] <- integer(ylen)
+  dimnames(F) <- list(seq_X, seq_Y)
 
-    # Local alignment with dynamic programming: build scoring matrix F
-    F <- build_F(F, seq_X, seq_Y, match, mismatch, d)  
+  # Local alignment with dynamic programming: build scoring matrix F
+  F <- build_F(F, seq_X, seq_Y, match, mismatch, d)  
 
-    # Traceback
-    aligned_sequences <- traceback(F, seq_X, seq_Y, match, mismatch, d)
+  # Traceback
+  aligned_sequences <- traceback(F, seq_X, seq_Y, match, mismatch, d)
     
-    result <- Smith_Waterman(X=X, Y=Y, match=match, mismatch=mismatch, d=d,
-                             aligned_X=aligned_sequences$aligned_X,
-                             aligned_Y=aligned_sequences$aligned_Y,
-                             alignment_score=max(F), F=F)
-    return(result)
+  result <- Smith_Waterman(X=X, Y=Y, match=match, mismatch=mismatch, d=d,
+                           aligned_X=aligned_sequences$aligned_X,
+                           aligned_Y=aligned_sequences$aligned_Y,
+                           alignment_score=max(F), F=F)
+  
+  return(result)
 }
 
 #' Build scoring matrix F
@@ -115,8 +116,8 @@ smith_waterman_string <- function(X, Y, match, mismatch, d) {
 #' F according to Smith-Waterman greedy algorithm 
 #'
 #' @param F Pre-initialized scoring matrix
-#' @param seq_X A nucleotide sequence preceeded by '0'
-#' @param seq_Y Another nucleotide sequence preceeded by '0'
+#' @param seq_X A nucleotide sequence preceded by '0'
+#' @param seq_Y Another nucleotide sequence preceded by '0'
 #' @param match Score associated with a match
 #' @param mismatch Penalty associated with a mismatch
 #' @param d Penalty associated with a gap/indel
@@ -152,11 +153,12 @@ build_F <- function(F, seq_X, seq_Y, match, mismatch, d) {
 #' Traceback
 #' 
 #' Traceback implemented according to an efficient modified version
-#' of the Needleman-Wunsch algorithm (see Wikipedia reference link)
+#' of the Needleman-Wunsch algorithm (see Wikipedia reference link).
+#' This function returns a list containing the two locally aligned strings
 #'
 #' @param F Scoring matrix obtained according to Smith-Waterman algorithm
-#' @param seq_X A nucleotide sequence preceeded by '0'
-#' @param seq_Y Another nucleotide sequence preceeded by '0'
+#' @param seq_X A nucleotide sequence preceded by '0'
+#' @param seq_Y Another nucleotide sequence preceded by '0'
 #' @param match Score associated with a match
 #' @param mismatch Penalty associated with a mismatch
 #' @param d Penalty associated with a gap/indel
@@ -242,7 +244,8 @@ smith_waterman_DNAString <- function(X, Y, match, mismatch, d) {
 
 #' Apply Smith-Waterman algorithm and show its output
 #'
-#' This function takes as input two strings/DNAString objects and returns
+#' This function takes as input one string and one DNAString object
+#' or two strings or two DNAString objects and returns
 #' one of the possible best local alignment in terms
 #' of score according to Smith-Waterman greedy algorithm.
 #'

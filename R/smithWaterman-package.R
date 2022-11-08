@@ -6,8 +6,8 @@
 #' \tabular{ll}{
 #' Package: \tab smithWaterman\cr
 #' Type: \tab Package\cr
-#' Version: \tab 1.0.0\cr
-#' Date: \tab 2022-10-03\cr
+#' Version: \tab 0.99.0\cr
+#' Date: \tab 2022-12-19\cr
 #' License: \tab GPL (>=2)\cr
 #' }
 #' 

@@ -1,7 +1,7 @@
 ---
 title: "Best local alignment of two nucleotide sequences according to Smith-Waterman algorithm with smithWaterman"
 author: "Emanuele Cavalleri"
-date: "`r Sys.Date()`"
+date: "`r as.Date('2022-12-19')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Best local alignment of two nucleotide sequences according to Smith-Waterman algorithm with smithWaterman}
@@ -24,7 +24,7 @@ library(smithWaterman)
 
 # Introduction
 
-The **Smith–Waterman** algorithm performs local sequence alignment; that is, for determining similar regions between two strings of nucleic acid sequences or protein sequences ([Wikipedia entry](https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm)). Instead of looking at the entire sequence, the Smith–Waterman algorithm compares segments of all possible lengths and optimizes the similarity measure.
+The **Smith–Waterman** algorithm performs local sequence alignment; that is, for determining similar regions between two strings of nucleic acid sequences or protein sequences. Instead of looking at the entire sequence, the Smith–Waterman algorithm compares segments of all possible lengths and optimizes the similarity measure ([Wikipedia entry](https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm)).
 
 The `r Rpackage("smithWaterman")` package provides functions to apply the Smith-Waterman algorithm on nucleotide sequences and to show its result.
 
@@ -43,13 +43,7 @@ gap <- -7
 # Same with: mismatch <- 10 and/or gap <- 7
 
 sw <- smith_waterman_string(X, Y, match, mismatch, gap)
-sw
-```
-
-*show()* method allows us to better visualize the results.
-
-```{r}
-sw$show()
+sw # show() method allows us to better visualize the results
 ```
 
 ## Applying **Smith-Waterman** algorithm to DNAString objects
@@ -63,7 +57,7 @@ X <- DNAString(X)
 Y <- DNAString(Y)
 
 sw <- smith_waterman_DNAString(X, Y, match, mismatch, gap)
-sw$show()
+sw
 ```
 
 A real-case example based on *phiX174Phage*'s reads to also test the efficiency of the algorithm in terms of time:
@@ -114,7 +108,7 @@ X <-  HNF4alpha[1]
 Y <-  HNF4alpha[6]
 
 sw <- smith_waterman_DNAString(X, Y, match, mismatch, gap)
-sw$show()
+sw
 ```
 
 ## Applying **Smith-Waterman** algorithm to string and/or DNAString objects
@@ -123,7 +117,7 @@ sw$show()
 
 ```{r}
 sw <- smith_waterman(HNF4alpha[1], "AGGCCAAAGTCCT", match, mismatch, gap)
-sw$show()
+sw
 ```
 
 ## SessionInfo

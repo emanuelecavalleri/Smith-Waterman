@@ -9,9 +9,9 @@ traceback(F, seq_X, seq_Y, match, mismatch, d)
 \arguments{
 \item{F}{Scoring matrix obtained according to Smith-Waterman algorithm}
 
-\item{seq_X}{A nucleotide sequence preceeded by '0'}
+\item{seq_X}{A nucleotide sequence preceded by '0'}
 
-\item{seq_Y}{Another nucleotide sequence preceeded by '0'}
+\item{seq_Y}{Another nucleotide sequence preceded by '0'}
 
 \item{match}{Score associated with a match}
 
@@ -24,7 +24,8 @@ A list containing the two locally aligned strings
 }
 \description{
 Traceback implemented according to an efficient modified version
-of the Needleman-Wunsch algorithm (see Wikipedia reference link)
+of the Needleman-Wunsch algorithm (see Wikipedia reference link).
+This function returns a list containing the two locally aligned strings
 }
 \references{
 \url{https://en.wikipedia.org/wiki/Needleman\%E2\%80\%93Wunsch_algorithm#Advanced_presentation_of_algorithm}\cr

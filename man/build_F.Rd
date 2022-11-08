@@ -9,9 +9,9 @@ build_F(F, seq_X, seq_Y, match, mismatch, d)
 \arguments{
 \item{F}{Pre-initialized scoring matrix}
 
-\item{seq_X}{A nucleotide sequence preceeded by '0'}
+\item{seq_X}{A nucleotide sequence preceded by '0'}
 
-\item{seq_Y}{Another nucleotide sequence preceeded by '0'}
+\item{seq_Y}{Another nucleotide sequence preceded by '0'}
 
 \item{match}{Score associated with a match}
 

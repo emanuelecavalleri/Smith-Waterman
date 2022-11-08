@@ -21,7 +21,8 @@ smith_waterman(X, Y, match, mismatch, d)
 A Smith-Waterman object
 }
 \description{
-This function takes as input two strings/DNAString objects and returns
+This function takes as input one string and one DNAString object
+or two strings or two DNAString objects and returns
 one of the possible best local alignment in terms
 of score according to Smith-Waterman greedy algorithm.
 }
